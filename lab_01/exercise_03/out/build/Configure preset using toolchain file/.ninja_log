@@ -1,0 +1,15 @@
+# ninja log v5
+2	28	1757907928442778683	CMakeFiles/exercise_03.dir/Core/Src/sysmem.c.o	d5c726f234607c31
+2	40	1757907928456778663	CMakeFiles/exercise_03.dir/Core/Src/stm32f1xx_hal_msp.c.o	c354c0b1869f99e4
+2	42	1757907928458778660	CMakeFiles/exercise_03.dir/Core/Src/syscalls.c.o	ba36d1e1fa4ee060
+2	50	1757907928466778648	CMakeFiles/exercise_03.dir/Core/Src/stm32f1xx_it.c.o	89516f49b04b7fc0
+3	51	1757907928466778648	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.o	f315056561d0b345
+3	53	1757907928468778645	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f1xx.c.o	7a5fc5e2cf735cbd
+3	61	1757907928477778633	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.o	21603edc685a4721
+3	62	1757907928477778633	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.o	6f85b5cdad54908a
+3	62	1757907928478778631	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.o	e9a84e4132894e0a
+5	71	1757907928488235746	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.o	7cac228892853312
+5	71	1757907928488235746	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.o	3f8a565b10cd7ef4
+5	74	1757907928490778614	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.o	e3b488770ab6aae8
+3	75	1757907928491778613	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.o	350b27abc9277fc8
+4	85	1757907928501778598	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.o	9c1bc7c3a04aa98

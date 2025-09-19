@@ -67,7 +67,7 @@ uint16_t ledPins[] = {
     LED_8_Pin,
     LED_9_Pin,
     LED_10_Pin,
-    LED_11_Pin,
+    LED_11_Pin
 };
 
 void clearAllClock()
@@ -77,29 +77,31 @@ void clearAllClock()
 
 void setNumberOnClock(int number)
 {
-    if (number < 1 || number > 12)
+    // Check index
+    if (number < 0 || number > 11)
     {
         return; // Invalid number
     }
-    HAL_GPIO_WritePin(GPIOA, ledPins[number - 1], GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, ledPins[number], GPIO_PIN_RESET);
 }
 
 void clearNumberOnClock(int number)
 {
-    if (number < 1 || number > 12)
+    // Check index
+    if (number < 0 || number > 11)
     {
         return; // Invalid number
     }
-    HAL_GPIO_WritePin(GPIOA, ledPins[number - 1], GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA, ledPins[number], GPIO_PIN_SET);
 }
 
 void showClockHands(int hour_pos, int minute_pos, int second_pos)
 {
     clearAllClock();
 
-    setNumberOnClock(hour_pos + 1);
-    setNumberOnClock(minute_pos + 1);
-    setNumberOnClock(second_pos + 1);
+    setNumberOnClock(hour_pos);
+    setNumberOnClock(minute_pos);
+    setNumberOnClock(second_pos);
 }
 
 int seconds = 0;
@@ -146,7 +148,7 @@ int main(void)
     while (1)
     {
         showClockHands(hours, minutes, seconds);
-        HAL_Delay(1000);
+        HAL_Delay(500);
 
         seconds++;
         if (seconds >= 12)

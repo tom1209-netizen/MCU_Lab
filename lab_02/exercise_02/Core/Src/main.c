@@ -43,9 +43,13 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
+int hour = 11;
+int minute = 8;
+int second = 0;
+
 const int MAX_LED = 4;
 int index_led = 0;
-int led_buffer[4] = {1, 2, 3, 0};
+int led_buffer[4] = {0, 0, 0, 0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,6 +62,11 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/**
+ * @brief  Displays a single digit (0-9) on a 7-segment display by controlling the segment pins.
+ * @param  num: The digit to display (0-9).
+ * @retval None
+ */
 static inline void display7SEG(int num)
 {
     switch (num)
@@ -164,6 +173,10 @@ static inline void display7SEG(int num)
     }
 }
 
+/**
+ * @brief  Disables all 7-segment displays by setting their enable pins high.
+ * @retval None
+ */
 static inline void disable_all_7seg(void)
 {
     HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
@@ -172,6 +185,11 @@ static inline void disable_all_7seg(void)
     HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
 }
 
+/**
+ * @brief  Enables the specified 7-segment display based on the given index.
+ * @param  idx: The index of the 7-segment display to enable (0 to 3).
+ * @retval None
+ */
 static inline void enable_7seg_idx(uint8_t idx)
 {
     switch (idx)
@@ -191,6 +209,11 @@ static inline void enable_7seg_idx(uint8_t idx)
     }
 }
 
+/**
+ * @brief  Updates the specified 7-segment display with the corresponding value from led_buffer.
+ * @param  index: The index of the 7-segment display to update (0 to 3).
+ * @retval None
+ */
 void update7SEG(int index)
 {
     // First, turn off all segment drivers to prevent "ghosting"
@@ -227,6 +250,19 @@ void update7SEG(int index)
     default:
         break;
     }
+}
+
+/**
+ * @brief  Populates the led_buffer array with the correct digits for the clock.
+ * @retval None
+ */
+void updateClockBuffer()
+{
+    led_buffer[0] = hour / 10;
+    led_buffer[1] = hour % 10;
+
+    led_buffer[2] = minute / 10;
+    led_buffer[3] = minute % 10;
 }
 
 /* USER CODE END 0 */
@@ -270,10 +306,35 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     while (1)
     {
-        /* USER CODE END WHILE */
+        // Increment the second every loop
+        second++;
 
-        /* USER CODE BEGIN 3 */
+        // Handle second rollover
+        if (second >= 60)
+        {
+            second = 0;
+            minute++;
+        }
+
+        // Handle minute rollover
+        if (minute >= 60)
+        {
+            minute = 0;
+            hour++;
+        }
+
+        // Handle hour rollover
+        if (hour >= 24)
+        {
+            hour = 0;
+        }
+
+        // Update the display buffer with the new time
+        updateClockBuffer();
+
+        HAL_Delay(1000);
     }
+    /* USER CODE END 3 */
     /* USER CODE END 3 */
 }
 

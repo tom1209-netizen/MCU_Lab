@@ -43,7 +43,9 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+const int MAX_LED = 4;
+int index_led = 0;
+int led_buffer[4] = {1, 2, 3, 0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -185,6 +187,44 @@ static inline void enable_7seg_idx(uint8_t idx)
         break;
     case 3:
         HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_RESET);
+        break;
+    }
+}
+
+void update7SEG(int index)
+{
+    // First, turn off all segment drivers to prevent "ghosting"
+    disable_all_7seg();
+
+    // Use the index to select which 7-segment display to activate
+    // and which number from the buffer to show.
+    switch (index)
+    {
+    case 0:
+        // Display the first number (led_buffer[0]) on the first 7-segment display
+        display7SEG(led_buffer[0]);
+        enable_7seg_idx(0);
+        break;
+
+    case 1:
+        // Display the second number (led_buffer[1]) on the second 7-segment display
+        display7SEG(led_buffer[1]);
+        enable_7seg_idx(1);
+        break;
+
+    case 2:
+        // Display the third number (led_buffer[2]) on the third 7-segment display
+        display7SEG(led_buffer[2]);
+        enable_7seg_idx(2);
+        break;
+
+    case 3:
+        // Display the fourth number (led_buffer[3]) on the fourth 7-segment display
+        display7SEG(led_buffer[3]);
+        enable_7seg_idx(3);
+        break;
+
+    default:
         break;
     }
 }
@@ -365,17 +405,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     static int counter = 0;
     static int led_counter = 0;
 
-    static uint8_t idx = 0;                       
-    static const uint8_t digits[4] = {1, 2, 3, 0};
-
     if (htim->Instance == TIM2)
     {
         counter++;
         led_counter++;
         if (counter >= 50)
         {
-            counter = 0;
-            idx = (idx + 1) & 0x03;
+            counter = 0; 
+
+            index_led = (index_led + 1) % MAX_LED;
         }
         if (led_counter >= 100)
         {
@@ -383,11 +421,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
         }
 
-        disable_all_7seg();
-
-        display7SEG(digits[idx]); 
-
-        enable_7seg_idx(idx);
+        update7SEG(index_led);
     }
 }
 

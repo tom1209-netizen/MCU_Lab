@@ -328,33 +328,36 @@ int main(void)
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
+    setTimer0(1000);
     while (1)
     {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        HAL_Delay(1000);
-
-        second++;
-
-        if (second >= 60)
+        if (timer0_flag == 1)
         {
-            second = 0;
-            minute++;
-        }
-        if (minute >= 60)
-        {
-            minute = 0;
-            hour++;
-        }
-        if (hour >= 24)
-        {
-            hour = 0;
-        }
+            setTimer0(1000);
+            second++;
 
-        updateClockBuffer();
+            if (second >= 60)
+            {
+                second = 0;
+                minute++;
+            }
+            if (minute >= 60)
+            {
+                minute = 0;
+                hour++;
+            }
+            if (hour >= 24)
+            {
+                hour = 0;
+            }
 
-        index_led = (index_led + 1) % MAX_LED;
+            updateClockBuffer();
+
+            index_led = (index_led + 1) % MAX_LED;
+        }
     }
     /* USER CODE END 3 */
 }
@@ -488,6 +491,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
     if (htim->Instance == TIM2)
     {
+        timer_run();
         update7SEG(index_led);
         led_counter++;
         if (led_counter >= 100)

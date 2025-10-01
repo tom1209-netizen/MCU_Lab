@@ -265,6 +265,28 @@ void updateClockBuffer()
     led_buffer[3] = minute % 10;
 }
 
+int timer_counter = 0;
+int timer0_flag = 0;
+int TIMER_PERIOD = 10;
+
+void setTimer0(int duration)
+{
+    timer_counter = duration / TIMER_PERIOD;
+    timer0_flag = 0;
+}
+
+void timer_run(void)
+{
+    if (timer_counter > 0)
+    {
+        timer_counter--;
+        if (timer_counter == 0)
+        {
+            timer0_flag = 1;
+        }
+    }
+}
+
 /* USER CODE END 0 */
 
 /**

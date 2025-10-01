@@ -300,41 +300,40 @@ int main(void)
 
     /* USER CODE BEGIN 2 */
     HAL_TIM_Base_Start_IT(&htim2);
+    updateClockBuffer();
+    update7SEG(index_led);
     /* USER CODE END 2 */
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1)
     {
-        // Increment the second every loop
+        /* USER CODE END WHILE */
+
+        /* USER CODE BEGIN 3 */
+        HAL_Delay(1000);
+
         second++;
 
-        // Handle second rollover
         if (second >= 60)
         {
             second = 0;
             minute++;
         }
-
-        // Handle minute rollover
         if (minute >= 60)
         {
             minute = 0;
             hour++;
         }
-
-        // Handle hour rollover
         if (hour >= 24)
         {
             hour = 0;
         }
 
-        // Update the display buffer with the new time
         updateClockBuffer();
 
-        HAL_Delay(1000);
+        index_led = (index_led + 1) % MAX_LED;
     }
-    /* USER CODE END 3 */
     /* USER CODE END 3 */
 }
 
@@ -463,26 +462,17 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    static int counter = 0;
     static int led_counter = 0;
 
     if (htim->Instance == TIM2)
     {
-        counter++;
+        update7SEG(index_led);
         led_counter++;
-        if (counter >= 50)
-        {
-            counter = 0; 
-
-            index_led = (index_led + 1) % MAX_LED;
-        }
         if (led_counter >= 100)
         {
             led_counter = 0;
             HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
         }
-
-        update7SEG(index_led);
     }
 }
 

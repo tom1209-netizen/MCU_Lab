@@ -40,3 +40,5 @@
 101	144	1759283263208708599	exercise_02.elf	39728ba66ce8e6bf
 1	72	1759283400736992685	CMakeFiles/exercise_02.dir/Core/Src/main.c.obj	14d8c8c20ebeeddf
 72	114	1759283400775398569	exercise_02.elf	39728ba66ce8e6bf
+1	70	1759283611792474526	CMakeFiles/exercise_02.dir/Core/Src/main.c.obj	14d8c8c20ebeeddf
+70	108	1759283611825090194	exercise_02.elf	39728ba66ce8e6bf

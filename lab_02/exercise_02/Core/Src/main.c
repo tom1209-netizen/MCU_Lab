@@ -357,6 +357,8 @@ int main(void)
             updateClockBuffer();
 
             index_led = (index_led + 1) % MAX_LED;
+
+            HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
         }
     }
     /* USER CODE END 3 */
@@ -487,18 +489,10 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    static int led_counter = 0;
-
     if (htim->Instance == TIM2)
     {
         timer_run();
         update7SEG(index_led);
-        led_counter++;
-        if (led_counter >= 100)
-        {
-            led_counter = 0;
-            HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-        }
     }
 }
 

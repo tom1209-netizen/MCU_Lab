@@ -59,6 +59,9 @@ int timer0_flag = 0;
 int timer1_counter = 0;
 int timer1_flag = 0;
 
+int timer2_counter = 0;
+int timer2_flag = 0;
+
 int TIMER_PERIOD = 10;
 
 // Variable for LED matrix
@@ -76,6 +79,11 @@ uint8_t matrix_buffer[8] = {
     0b01000010,
     0b00000000
 };
+
+// Animation state
+int scroll_offset = -8; 
+int scroll_dir = +1;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -329,6 +337,24 @@ void timer1_run(void)
     }
 }
 
+void setTimer2(int duration)
+{
+    timer2_counter = duration / TIMER_PERIOD;
+    timer2_flag = 0;
+}
+
+void timer2_run(void)
+{
+    if (timer2_counter > 0)
+    {
+        timer2_counter--;
+        if (timer2_counter == 0)
+        {
+            timer2_flag = 1;
+        }
+    }
+}
+
 // LED matrix functions
 static inline void setRow(uint8_t idx, GPIO_PinState pinState)
 {
@@ -413,10 +439,18 @@ static inline void enableMatrixCol(int index)
     }
 }
 
+static inline uint8_t getColumnWithOffset(int phys_col)
+{
+    int src = phys_col - scroll_offset; // +offset moves picture to the right
+    if (src < 0 || src >= 8)
+        return 0x00; // out of range = blank
+    return matrix_buffer[src];
+}
+
 void updateLEDMatrix(int index)
 {
     disableAllMatrixCols();
-    displayMatrixRow(matrix_buffer[index]);
+    displayMatrixRow(getColumnWithOffset(index));
     enableMatrixCol(index);
 }
 
@@ -462,6 +496,7 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     setTimer0(1000);
     setTimer1(10);
+    setTimer2(100); // Animation timer
     while (1)
     {
         /* USER CODE END WHILE */
@@ -506,6 +541,24 @@ int main(void)
             if (index_led_matrix >= MAX_LED_MATRIX)
             {
                 index_led_matrix = 0;
+            }
+        }
+
+        if (timer2_flag == 1)
+        {
+            setTimer2(100);
+
+            // Animation update
+            scroll_offset += scroll_dir;
+            if (scroll_offset > 8)
+            {
+                scroll_offset = 8;
+                scroll_dir = -1;
+            }
+            else if (scroll_offset < -8)
+            {
+                scroll_offset = -8;
+                scroll_dir = +1;
             }
         }
     }
@@ -646,6 +699,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
         timer_run();
         timer1_run();
+        timer2_run();
     }
 }
 

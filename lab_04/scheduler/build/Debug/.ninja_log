@@ -1,0 +1,26 @@
+# ninja log v5
+4	23	1761875584327431767	CMakeFiles/scheduler.dir/startup_stm32f103x6.s.obj	bd77c8fc91cb4bfa
+3	47	1761875584350432209	CMakeFiles/scheduler.dir/Core/Src/sysmem.c.obj	1f025a4ddd9eba7f
+3	71	1761875584376432710	CMakeFiles/scheduler.dir/Core/Src/syscalls.c.obj	f27b05cb9bb8b2a8
+2	153	1761875584458769858	CMakeFiles/scheduler.dir/Core/Src/stm32f1xx_it.c.obj	8013d63ff574324b
+2	158	1761875584464434403	CMakeFiles/scheduler.dir/Core/Src/stm32f1xx_hal_msp.c.obj	96393f40c3a18436
+6	159	1761875584464434403	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj	a179e8c9f6152b56
+4	161	1761875584466434442	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f1xx.c.obj	70d0240336d4c2a1
+4	167	1761875584472434557	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj	e40433b1e5c7071d
+4	172	1761875584478434673	CMakeFiles/scheduler.dir/Core/Src/scheduler.c.obj	5676cc61f09d3134
+7	178	1761875584483434769	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj	72a8ff8cef0dc096
+5	181	1761875584486434826	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj	54ad61cd99443474
+6	183	1761875584488434865	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj	f6794a35c8106137
+7	183	1761875584488434865	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj	b6f773fd2cb20378
+10	187	1761875584491434923	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj	5ac50d6baebcb904
+6	187	1761875584492434942	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj	17cb9af0cbe20177
+9	187	1761875584493434961	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj	4afee71e84e46ff2
+1	199	1761875584504435173	CMakeFiles/scheduler.dir/Core/Src/main.c.obj	d53e9c81df4fa82
+8	207	1761875584512435327	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj	dd82e9bce58c9372
+7	222	1761875584527435615	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj	8f8302a33c680670
+5	264	1761875584569436424	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj	27c6e647a6f30bc4
+11	267	1761875584572436481	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj	35d52cfe6f590ccb
+5	391	1761875584694438829	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj	e9f23f457c3862e
+391	494	1761875584788525767	scheduler.elf	77e9a52c0e4836ad
+1	141	1761875630446363407	CMakeFiles/scheduler.dir/Core/Src/main.c.obj	d53e9c81df4fa82
+141	220	1761875630519707280	scheduler.elf	77e9a52c0e4836ad

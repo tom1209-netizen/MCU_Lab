@@ -1,6 +1,0 @@
-/home/tom/Documents/MCU_Lab/lab_04/scheduler/build/Debug/CMakeFiles/scheduler.dir
-/home/tom/Documents/MCU_Lab/lab_04/scheduler/build/Debug/CMakeFiles/edit_cache.dir
-/home/tom/Documents/MCU_Lab/lab_04/scheduler/build/Debug/CMakeFiles/rebuild_cache.dir
-/home/tom/Documents/MCU_Lab/lab_04/scheduler/build/Debug/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
-/home/tom/Documents/MCU_Lab/lab_04/scheduler/build/Debug/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
-/home/tom/Documents/MCU_Lab/lab_04/scheduler/build/Debug/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
